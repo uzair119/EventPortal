@@ -33,12 +33,12 @@ public class UserService {
         userRepository.deleteUserByUsername(username);
     }
 
-    public boolean exists(String username)
+    public boolean existsByUsername(String username)
     {
-        return userRepository.existsById(username);
+        return userRepository.existsByUsername(username);
     }
 
-    public User getUser(String username)
+    public User getUserbyUsername(String username)
     {
         Optional<User> user = userRepository.findById(username);
         return user.orElse(null);

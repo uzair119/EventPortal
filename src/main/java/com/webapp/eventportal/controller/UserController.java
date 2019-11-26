@@ -3,11 +3,11 @@ package com.webapp.eventportal.controller;
 import com.webapp.eventportal.model.User;
 import com.webapp.eventportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,8 +19,9 @@ public class UserController {
 
     @PostMapping(path="/create")
     public User createUser(@RequestBody User user, HttpServletResponse httpServletResponse) throws IOException {
-        if(userService.exists(user.getUsername()))
+        if(userService.existsByUsername(user.getUsername()))
             httpServletResponse.sendError(403);
+        user.setCreatedDate(new Date());
         return userService.save(user);
     }
 
@@ -32,7 +33,7 @@ public class UserController {
 
     @GetMapping(path="/{username}")
     public User getUserByID(@PathVariable(name="username") String username, HttpServletResponse httpServletResponse) throws IOException {
-        User user = userService.getUser(username);
+        User user = userService.getUserbyUsername(username);
         if(user == null)
             httpServletResponse.sendError(404);
         return user;

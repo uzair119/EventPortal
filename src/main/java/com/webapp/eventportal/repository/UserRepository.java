@@ -9,6 +9,7 @@ public interface UserRepository extends CrudRepository<User,String> {
     @Override
     User save(User user);
     User findByUsername(String username);
+    boolean existsByUsername(String username);
 
     @Override
     boolean existsById(String s);
