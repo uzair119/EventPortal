@@ -41,23 +41,23 @@ public class User {
     private Role role;
 
 
-    @OneToOne()
-    @JoinColumn(name="created_by")
-    @JsonIgnore
-    private User createdBy;
-
-    @Column(nullable = false)
-    @JsonIgnore
-    private Date createdDate;
-
-    @OneToOne()
-    @JoinColumn(name="last_modified_by")
-    @JsonIgnore
-    private User lastModifiedBy;
-
-    @Column()
-    @JsonIgnore
-    private Date lastModifiedDate;
+//    @OneToOne()
+//    @JoinColumn(name="created_by")
+//    @JsonIgnore
+//    private User createdBy;
+//
+//    @Column(nullable = false)
+//    @JsonIgnore
+//    private Date createdDate;
+//
+//    @OneToOne()
+//    @JoinColumn(name="last_modified_by")
+//    @JsonIgnore
+//    private User lastModifiedBy;
+//
+//    @Column()
+//    @JsonIgnore
+//    private Date lastModifiedDate;
 
     public Long getId() {
         return id;
@@ -139,36 +139,36 @@ public class User {
         this.role = role;
     }
 
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public User getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(User lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
+//    public User getCreatedBy() {
+//        return createdBy;
+//    }
+//
+//    public void setCreatedBy(User createdBy) {
+//        this.createdBy = createdBy;
+//    }
+//
+//    public Date getCreatedDate() {
+//        return createdDate;
+//    }
+//
+//    public void setCreatedDate(Date createdDate) {
+//        this.createdDate = createdDate;
+//    }
+//
+//    public User getLastModifiedBy() {
+//        return lastModifiedBy;
+//    }
+//
+//    public void setLastModifiedBy(User lastModifiedBy) {
+//        this.lastModifiedBy = lastModifiedBy;
+//    }
+//
+//    public Date getLastModifiedDate() {
+//        return lastModifiedDate;
+//    }
+//
+//    public void setLastModifiedDate(Date lastModifiedDate) {
+//        this.lastModifiedDate = lastModifiedDate;
+//    }
 }
 

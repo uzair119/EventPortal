@@ -1,7 +1,12 @@
 package com.webapp.eventportal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Team {
@@ -20,15 +25,27 @@ public class Team {
     @JoinColumn()
     private Institution institution;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<TeamMember> teamMemberList;
+    @OneToMany(mappedBy ="team", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Set<TeamMember> teamMembers = new HashSet();
 
-    public List<TeamMember> getTeamMemberList() {
-        return teamMemberList;
+    @ManyToMany(mappedBy = "teams")
+    @JsonIgnore
+    private Set<Competition> competitions = new HashSet();
+
+    public Set<Competition> getCompetitions() {
+        return competitions;
     }
 
-    public void setTeamMemberList(List<TeamMember> teamMemberList) {
-        this.teamMemberList = teamMemberList;
+    public void setCompetitions(Set<Competition> competitions) {
+        this.competitions = competitions;
+    }
+
+    public Set<TeamMember> getTeamMemberList() {
+        return teamMembers;
+    }
+
+    public void setTeamMemberList(Set<TeamMember> teamMembers) {
+        this.teamMembers = teamMembers;
     }
 
     public long getId() {

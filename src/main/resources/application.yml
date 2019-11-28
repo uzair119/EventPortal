@@ -1,7 +1,7 @@
 spring:
     datasource:
         password: uzair118
-        url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/eventportaldb
+        url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/eventportal
         username: uzair118
     jpa:
         hibernate:

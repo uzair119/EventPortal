@@ -29,7 +29,7 @@ public class RoleController {
     public Role create(@RequestBody Role role, HttpServletResponse httpServletResponse) throws IOException {
         if(roleService.exists(role.getId()))
             httpServletResponse.sendError(403);
-        role.setCreatedDate(new Date());
+//        role.setCreatedDate(new Date());
         return roleService.save(role);
     }
 

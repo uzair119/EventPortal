@@ -33,8 +33,8 @@ public class UserService implements UserDetailsService {
     @Override
     public org.springframework.security.core.userdetails.User loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsernameAndActive(username, true);
-        System.out.println("user");
-        System.out.println(user.getUsername()+ " " +  " " + user.getPassword());
+//        System.out.println("user");
+//        System.out.println(user.getUsername()+ " " +  " " + user.getPassword());
         Set<GrantedAuthority> grantedAuthorities = new HashSet();
         grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);

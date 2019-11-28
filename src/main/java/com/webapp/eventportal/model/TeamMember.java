@@ -1,5 +1,7 @@
 package com.webapp.eventportal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,7 +20,8 @@ public class TeamMember {
     private String cnic;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="team_id",referencedColumnName = "id")
+    @JsonIgnore
     private Team team;
 
     public long getId() {

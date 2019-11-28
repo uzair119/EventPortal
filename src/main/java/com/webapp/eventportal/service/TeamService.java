@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeamService {
@@ -19,6 +20,12 @@ public class TeamService {
     public Team save(Team team)
     {
         return teamRepository.save(team);
+    }
+
+    public Team getTeamById(Long id)
+    {
+        Optional<Team> team = teamRepository.findById(id);
+        return team.orElse(null);
     }
 
     public List<Team> getAllTeams(){

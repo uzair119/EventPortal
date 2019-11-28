@@ -35,7 +35,7 @@ public class UserController {
     public User createUser(@RequestBody User user, HttpServletResponse httpServletResponse) throws IOException {
         if(userService.existsByUsername(user.getUsername()))
             httpServletResponse.sendError(403);
-        user.setCreatedDate(new Date());
+//        user.setCreatedDate(new Date());
         return userService.save(user);
     }
 
@@ -43,7 +43,7 @@ public class UserController {
     public User registerUser(@RequestBody User user, HttpServletResponse httpServletResponse) throws IOException {
         if(userService.existsByUsername(user.getUsername()))
             httpServletResponse.sendError(403);
-        user.setCreatedDate(new Date());
+//        user.setCreatedDate(new Date());
         user.setRole(roleService.getRoleByName("USER"));
         return userService.save(user);
     }

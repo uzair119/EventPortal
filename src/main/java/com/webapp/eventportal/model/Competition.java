@@ -1,6 +1,9 @@
 package com.webapp.eventportal.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Competition {
@@ -13,6 +16,18 @@ public class Competition {
 
     @Column(nullable = false)
     private Integer maxTeamSize;
+
+    @ManyToMany()
+    @JoinTable(name="team_competitions", joinColumns = {@JoinColumn(name="competition_id")}, inverseJoinColumns = {@JoinColumn(name="team_id")})
+    private Set<Team> teams = new HashSet<>();
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
+    }
 
     public long getId() {
         return id;

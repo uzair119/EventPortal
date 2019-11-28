@@ -6,7 +6,6 @@ import com.webapp.eventportal.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 public interface TeamRepository extends CrudRepository<Team,Long> {
 
