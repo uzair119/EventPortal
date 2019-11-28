@@ -1,6 +1,7 @@
 package com.webapp.eventportal.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Team {
@@ -18,6 +19,17 @@ public class Team {
     @ManyToOne
     @JoinColumn()
     private Institution institution;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<TeamMember> teamMemberList;
+
+    public List<TeamMember> getTeamMemberList() {
+        return teamMemberList;
+    }
+
+    public void setTeamMemberList(List<TeamMember> teamMemberList) {
+        this.teamMemberList = teamMemberList;
+    }
 
     public long getId() {
         return id;
