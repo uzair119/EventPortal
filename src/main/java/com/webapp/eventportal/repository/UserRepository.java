@@ -4,15 +4,15 @@ import com.webapp.eventportal.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface UserRepository extends CrudRepository<User,String> {
-    @Override
-    User save(User user);
-    User findByUsername(String username);
-    boolean existsByUsername(String username);
 
-    @Override
-    boolean existsById(String s);
+    User findByUsernameAndActive(String username, boolean active);
+
+    boolean existsByUsernameAndActive(String username, boolean active);
+
+    List<User> findAllByActive(boolean active);
 
     @Transactional
     void deleteUserByUsername(String username);

@@ -27,6 +27,11 @@ public class RoleService {
         return role.orElse(null);
     }
 
+    public Role getRoleByName(String name)
+    {
+        return roleRepository.findRoleByNameAndActive(name,true);
+    }
+
     public List<Role> getAllRoles()
     {
         return IterableUtils.toList(roleRepository.findAll());

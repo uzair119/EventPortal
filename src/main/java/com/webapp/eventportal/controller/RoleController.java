@@ -12,13 +12,20 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/role")
+@RequestMapping(path="/auth/admin/role")
 public class RoleController {
+//
+//    static final String ADMIN_PREFIX = "/auth/admin";
+//    static final String AUTH_PREFIX = "/auth";
+//    static final String CONTROLLER_PREFIX = "/role";
+//
+//    static final String ADMIN_ONLY = ADMIN_PREFIX+CONTROLLER_PREFIX;
+//    static final String AUTH_ONLY = AUTH_PREFIX+CONTROLLER_PREFIX;
 
     @Autowired
     private RoleService roleService;
 
-    @PostMapping(path = "/create")
+    @PostMapping(path ="/create")
     public Role create(@RequestBody Role role, HttpServletResponse httpServletResponse) throws IOException {
         if(roleService.exists(role.getId()))
             httpServletResponse.sendError(403);

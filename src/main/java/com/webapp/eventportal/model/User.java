@@ -1,5 +1,7 @@
 package com.webapp.eventportal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -41,16 +43,20 @@ public class User {
 
     @OneToOne()
     @JoinColumn(name="created_by")
+    @JsonIgnore
     private User createdBy;
 
     @Column(nullable = false)
+    @JsonIgnore
     private Date createdDate;
 
     @OneToOne()
     @JoinColumn(name="last_modified_by")
+    @JsonIgnore
     private User lastModifiedBy;
 
     @Column()
+    @JsonIgnore
     private Date lastModifiedDate;
 
     public Long getId() {
