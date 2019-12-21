@@ -4,10 +4,15 @@ import com.webapp.eventportal.model.User;
 import com.webapp.eventportal.service.RoleService;
 import com.webapp.eventportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +49,7 @@ public class UserController {
         if(userService.existsByUsername(user.getUsername()))
             httpServletResponse.sendError(403);
 //        user.setCreatedDate(new Date());
+        user.setActive(true);
         user.setRole(roleService.getRoleByName("USER"));
         return userService.save(user);
     }
@@ -61,6 +67,14 @@ public class UserController {
             httpServletResponse.sendError(404);
         return user;
     }
+
+    @GetMapping(path=AUTH_ONLY + "/me")
+    public User getLoggedInUser(HttpServletRequest httpServletRequest)
+    {
+        Principal principal = httpServletRequest.getUserPrincipal();
+        return userService.getUserByUsername(principal.getName());
+    }
+
 
     @DeleteMapping(path=ADMIN_ONLY+"/{username}")
     public void deleteUser(@PathVariable(name="username")String username)

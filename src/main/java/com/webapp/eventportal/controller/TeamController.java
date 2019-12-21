@@ -51,7 +51,7 @@ public class TeamController {
     }
 
     @GetMapping(value = "/lead/{id}")
-    public List<Team> getAllTeamsByName(@PathVariable Long id) {
+    public List<Team> getAllTeamsByLead(@PathVariable Long id) {
         return teamService.getAllTeamsByTeamLeadId(id);
     }
 
